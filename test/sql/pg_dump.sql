@@ -183,6 +183,10 @@ drop function get_sqlstate(TEXT);
 
 \c postgres :ROLE_SUPERUSER
 --need to shutdown workers to use db as template
+--<exclude_from_test>
+SELECT pg_cancel_backend(pid) FROM pg_stat_activity WHERE datname = :'TEST_DBNAME';
+--</exclude_from_test>
+
 CREATE DATABASE db_dump_error WITH TEMPLATE :TEST_DBNAME;
 
 --now test functions for permission errors
