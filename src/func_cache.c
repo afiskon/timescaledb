@@ -283,7 +283,33 @@ static FuncInfo funcinfo[] = {
 		.group_estimate = time_bucket_group_estimate,
 		.sort_transform = time_bucket_sort_transform,
 	},
-
+	{
+		.is_timescaledb_func = true,
+		.is_bucketing_func = true,
+		.funcname = "time_bucket_ng",
+		.nargs = 2,
+		.arg_types = { INTERVALOID, DATEOID },
+		.group_estimate = time_bucket_group_estimate, // AALEKSEEV XXX TODO
+		.sort_transform = time_bucket_sort_transform,
+	},
+	{
+		.is_timescaledb_func = true,
+		.is_bucketing_func = true,
+		.funcname = "time_bucket_ng",
+		.nargs = 2,
+		.arg_types = { INTERVALOID, TIMESTAMPOID },
+		.group_estimate = time_bucket_group_estimate,
+		.sort_transform = time_bucket_sort_transform,
+	},
+	{
+		.is_timescaledb_func = true,
+		.is_bucketing_func = true,
+		.funcname = "time_bucket_ng",
+		.nargs = 2,
+		.arg_types = { INTERVALOID, TIMESTAMPTZOID },
+		.group_estimate = time_bucket_group_estimate,
+		.sort_transform = time_bucket_sort_transform,
+	},
 	{
 		.is_timescaledb_func = true,
 		.is_bucketing_func = true,
