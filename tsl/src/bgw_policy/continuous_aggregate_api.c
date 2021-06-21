@@ -59,6 +59,7 @@ get_time_from_interval(const Dimension *dim, Datum interval, Oid type)
 	if (IS_INTEGER_TYPE(type))
 	{
 		Oid now_func = ts_get_integer_now_func(dim);
+		// AALEKSEEV TODO FIXME
 		int64 value = ts_interval_value_to_internal(interval, type);
 
 		Assert(now_func);

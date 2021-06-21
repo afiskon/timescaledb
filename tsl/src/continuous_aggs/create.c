@@ -642,6 +642,7 @@ caggtimebucket_validate(CAggTimebucketInfo *tbinfo, List *groupClause, List *tar
 			{
 				Const *width = castNode(Const, width_arg);
 
+				// AALEKSEEV TODO FIXME
 				tbinfo->bucket_width =
 					ts_interval_value_to_internal(width->constvalue, width->consttype);
 			}
