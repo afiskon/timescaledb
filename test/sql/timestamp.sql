@@ -618,6 +618,7 @@ SELECT timescaledb_experimental.time_bucket_ng('1 year', 'infinity' :: date) AS 
 SELECT timescaledb_experimental.time_bucket_ng('1 year', '2021-11-22' :: timestamp) AS result;
 SELECT timescaledb_experimental.time_bucket_ng('1 year', '2021-11-22' :: timestamptz) AS result;
 SELECT timescaledb_experimental.time_bucket_ng('1 year', '2021-11-22' :: timestamp, origin => '2021-06-01') AS result;
+SELECT timescaledb_experimental.time_bucket_ng('1 year', '2021-11-22' :: timestamptz, origin => '2021-06-01') AS result;
 
 -- N days / weeks buckets
 SELECT  to_char(d, 'YYYY-MM-DD') AS d,

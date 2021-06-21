@@ -75,22 +75,22 @@ ts_time_bucket_ng(PG_FUNCTION_ARGS)
 	if ((interval->time != 0) || ((interval->month != 0) && (interval->day != 0)))
 	{
 		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("unsupported interval: use either days and weeks, or months and years")));
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("interval must be either days and weeks, or months and years")));
 	}
 
 	if ((interval->month == 0) && (interval->day == 0))
 	{
 		/*
-		 * This will be fixed in furhter versions of ts_time_bucket_ng().
+		 * This will be fixed in future versions of ts_time_bucket_ng().
 		 * The reason why it's not yet implemented is that we want to start
 		 * experimenting with variable-sized buckets as soon as possible.
 		 * We know that fixed-sized buckets work OK and adding corresponding
 		 * logic will be trivial.
 		 */
 		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("unsupported interval: at least one day expected")));
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("interval must be at least one day")));
 	}
 
 	if (PG_NARGS() > 2)
@@ -102,8 +102,8 @@ ts_time_bucket_ng(PG_FUNCTION_ARGS)
 	if ((origin_day != 1) && (interval->month != 0))
 	{
 		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("Invalid 'origin' day, 1st day of the month expected")));
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("origin must be the first day of the month")));
 	}
 
 	if (DATE_NOT_FINITE(date))
@@ -118,9 +118,8 @@ ts_time_bucket_ng(PG_FUNCTION_ARGS)
 		if ((year < origin_year) || ((year == origin_year) && (month < origin_month)))
 		{
 			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("date is before origin, please choose an origin that is before all "
-							"dates")));
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("origin must be before the given date")));
 		}
 
 		delta = (year * 12 + month) - (origin_year * 12 + origin_month);
@@ -140,9 +139,8 @@ ts_time_bucket_ng(PG_FUNCTION_ARGS)
 		if (date < origin_date)
 		{
 			ereport(ERROR,
-					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-					 errmsg("date is before origin, please choose an origin that is before all "
-							"dates")));
+					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+					 errmsg("origin must be before the given date")));
 		}
 
 		delta = date - origin_date;
