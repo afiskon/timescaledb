@@ -428,6 +428,9 @@ initialize_func_info()
 								PointerGetDatum(paramtypes),
 								ObjectIdGetDatum(namespaceoid));
 
+		// AALEKSEEV:
+		// +ERROR:  cache lookup failed for function "time_bucket_ng" with 2 args
+
 		if (!HeapTupleIsValid(tuple))
 			elog(ERROR,
 				 "cache lookup failed for function \"%s\" with %d args", // AALEKSEEV TODO FIX ERROR
