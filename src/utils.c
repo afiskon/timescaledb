@@ -188,6 +188,7 @@ ts_interval_value_to_internal(Datum time_val, Oid type_oid)
 			return ts_integer_to_internal(time_val, type_oid);
 		case INTERVALOID:
 		{
+			// AALEKSEEV TODO FIXME
 			Interval *interval = DatumGetIntervalP(time_val);
 			if (interval->month != 0)
 				ereport(ERROR,
