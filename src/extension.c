@@ -202,6 +202,12 @@ ts_extension_schema_name(void)
 	return get_namespace_name(ts_extension_schema_oid());
 }
 
+const char *
+ts_experimental_schema_name(void)
+{
+	return "timescaledb_experimental";
+}
+
 /*
  *	Called upon all Relcache invalidate events.
  *	Returns whether or not to invalidate the entire extension.

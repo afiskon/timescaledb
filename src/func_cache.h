@@ -16,10 +16,26 @@
 typedef Expr *(*sort_transform_func)(FuncExpr *func);
 typedef double (*group_estimate_func)(PlannerInfo *root, FuncExpr *expr, double path_rows);
 
+/* Describes the function origin */
+typedef enum {
+	/* Function is provided by Postgres */
+	ORIGIN_POSTGRES = 0,
+	/*
+	 * Function is provided by TS and is stable.
+	 * It should be looked for in the default TS schema.
+	 */
+	ORIGIN_TIMESCALE_STABLE = 1,
+	/*
+	 * Fuction is provided by TS and is experimental.
+	 * It should be looked for in the experimental schema.
+	 */
+	ORIGIN_TIMESCALE_EXPERIMENTAL = 2,
+} FuncOrigin;
+
 typedef struct FuncInfo
 {
 	const char *funcname;
-	bool is_timescaledb_func;
+	FuncOrigin origin;
 	bool is_bucketing_func;
 	int nargs;
 	Oid arg_types[FUNC_CACHE_MAX_FUNC_ARGS];
