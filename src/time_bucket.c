@@ -137,6 +137,8 @@ ts_int64_bucket(PG_FUNCTION_ARGS)
 /* Returns the period in the same representation as Postgres Timestamps.
  * Note that this is not our internal representation (microseconds).
  * Always returns an exact value.*/
+// AALEKSEEV TODO FIXME returns zero for '1 month' interval and causes error:
+// `period must be greater than 0` in TIME_BUCKET_TS macro
 static inline int64
 get_interval_period_timestamp_units(Interval *interval)
 {
