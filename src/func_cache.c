@@ -430,7 +430,7 @@ initialize_func_info()
 
 		if (!HeapTupleIsValid(tuple))
 			elog(ERROR,
-				 "cache lookup failed for function \"%s\" with %d args",
+				 "cache lookup failed for function \"%s\" with %d args", // AALEKSEEV TODO FIX ERROR
 				 finfo->funcname,
 				 finfo->nargs);
 
