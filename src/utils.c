@@ -190,12 +190,14 @@ ts_interval_value_to_internal(Datum time_val, Oid type_oid)
 		{
 			// AALEKSEEV TODO FIXME
 			Interval *interval = DatumGetIntervalP(time_val);
+			/* --- temporary dirty hack to see what will happen
 			if (interval->month != 0)
 				ereport(ERROR,
 						(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
 						 errmsg("months and years not supported"),
 						 errdetail("An interval must be defined as a fixed duration (such as "
 								   "weeks, days, hours, minutes, seconds, etc.).")));
+			*/
 			return interval->time + (interval->day * USECS_PER_DAY);
 		}
 		default:
