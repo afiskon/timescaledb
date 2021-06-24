@@ -404,8 +404,8 @@ initialize_func_info()
 		.entrysize = sizeof(FuncEntry),
 		.hcxt = CacheMemoryContext,
 	};
-	Oid extension_nsp = get_namespace_oid(ts_extension_schema_name(), false);
 	Oid extension_nsp = ts_extension_schema_oid();
+	Oid experimental_nsp = get_namespace_oid(ts_experimental_schema_name(), false);
 	Oid pg_nsp = get_namespace_oid("pg_catalog", false);
 	HeapTuple tuple;
 	Relation rel;
