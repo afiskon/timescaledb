@@ -1108,14 +1108,6 @@ mattablecolumninfo_addentry(MatTableColumnInfo *out, Node *input, int original_q
 	Oid coltype, colcollation;
 	int32 coltypmod;
 
-	if (contain_mutable_functions(input))
-	{
-		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("only immutable functions supported in continuous aggregate view"),
-				 errhint("Make sure the function includes only immutable expressions,"
-						 " e.g., time_bucket('1 hour', time AT TIME ZONE 'GMT').")));
-	}
 	switch (nodeTag(input))
 	{
 		case T_Aggref:
