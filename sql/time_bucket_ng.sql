@@ -10,16 +10,19 @@
 -- be bugs, and the implementation doesn't claim to be complete. Use at
 -- your own risk.
 --
--- This function is IMMUTABLE while similar PostgreSQL function, date_trunc(),
--- is STABLE. The difference is that date_trunc() implicitly uses the current
--- TZ to calculate the result. This is not the case with time_bucket_ng(),
--- because it's going to get timezone explicitly in text format, e.g.:
+-- This function is IMMUTABLE when it doesn't accept timestamptz arguments,
+-- and STABLE otherwise. The reason is that occasionally timezones change.
+-- When dealing with timestamptz's from the far future, it's possible that
+-- between now and then the rules for given TZ will change by local laws. Which
+-- makes the function STABLE by the definition [1].
 --
---   SELECT time_bucket_ng('3 months', now() :: timestamptz, 'Europe/Berlin');
+-- We don't forbid users to work with timestamptz's from the future, nor warn
+-- about this corner case. This behavior is consistent with PostgreSQL
+-- behavior [2].
 --
--- In other words, there will be separate continuous aggregates for each
--- timezone. The timestamptz argument is not a problem, since internally it's
--- represented as a simple UTC timestamp.
+-- [1]: https://www.postgresql.org/docs/current/xfunc-volatility.html
+-- [2]: https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-TIMEZONES
+--
 CREATE OR REPLACE FUNCTION timescaledb_experimental.time_bucket_ng(bucket_width INTERVAL, ts DATE) RETURNS DATE
 	AS '@MODULE_PATHNAME@', 'ts_time_bucket_ng' LANGUAGE C IMMUTABLE PARALLEL SAFE STRICT;
 
