@@ -36,6 +36,8 @@ SELECT city,
 FROM conditions
 GROUP BY city, bucket;
 
-SELECT * FROM conditions_summary_weekly ORDER BY bucket;
+SELECT to_char(day, 'YYYY-MM-DD'), city, temperature
+FROM conditions_summary_weekly
+ORDER BY bucket;
 
 DROP TABLE conditions CASCADE;
