@@ -433,10 +433,12 @@ initialize_func_info()
 		bool hash_found;
 		Oid funcid;
 
-		if(finfo->origin == ORIGIN_TIMESCALE_STABLE)
+		if (finfo->origin == ORIGIN_TIMESCALE_STABLE)
 		{
 			namespaceoid = extension_nsp;
-		} else if(finfo->origin == ORIGIN_TIMESCALE_EXPERIMENTAL) {
+		}
+		else if (finfo->origin == ORIGIN_TIMESCALE_EXPERIMENTAL)
+		{
 			namespaceoid = experimental_nsp;
 		}
 

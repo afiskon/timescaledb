@@ -17,7 +17,8 @@ typedef Expr *(*sort_transform_func)(FuncExpr *func);
 typedef double (*group_estimate_func)(PlannerInfo *root, FuncExpr *expr, double path_rows);
 
 /* Describes the function origin */
-typedef enum {
+typedef enum
+{
 	/* Function is provided by Postgres */
 	ORIGIN_POSTGRES = 0,
 	/*
