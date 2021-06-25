@@ -36,7 +36,7 @@ SELECT city,
 FROM conditions
 GROUP BY city, bucket;
 
-SELECT to_char(day, 'YYYY-MM-DD'), city, temperature
+SELECT to_char(bucket, 'YYYY-MM-DD'), city, min, max
 FROM conditions_summary_weekly
 ORDER BY bucket;
 

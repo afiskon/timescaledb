@@ -37,12 +37,14 @@ SELECT city,
 FROM conditions
 GROUP BY city, bucket;
 NOTICE:  refreshing continuous aggregate "conditions_summary_weekly"
-SELECT * FROM conditions_summary_weekly ORDER BY bucket;
-  city  |   bucket   | min | max 
---------+------------+-----+-----
- Moscow | 06-12-2021 |  22 |  27
- Moscow | 06-19-2021 |  28 |  34
- Moscow | 06-26-2021 |  31 |  32
+SELECT to_char(bucket, 'YYYY-MM-DD'), city, min, max
+FROM conditions_summary_weekly
+ORDER BY bucket;
+  to_char   |  city  | min | max 
+------------+--------+-----+-----
+ 2021-06-12 | Moscow |  22 |  27
+ 2021-06-19 | Moscow |  28 |  34
+ 2021-06-26 | Moscow |  31 |  32
 (3 rows)
 
 DROP TABLE conditions CASCADE;
