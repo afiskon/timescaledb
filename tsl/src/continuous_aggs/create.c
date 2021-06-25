@@ -1071,7 +1071,7 @@ is_valid_bucketing_function(Oid funcid)
 {
 	FuncInfo *finfo = ts_func_cache_get_bucketing_func(funcid);
 
-	return finfo != NULL && finfo->is_timescaledb_func && finfo->nargs == 2;
+	return finfo != NULL && finfo->is_timescaledb_func && ((finfo->nargs == 2) || (finfo->nargs == 3));
 }
 
 /*initialize MatTableColumnInfo */
