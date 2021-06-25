@@ -289,7 +289,16 @@ static FuncInfo funcinfo[] = {
 		.funcname = "time_bucket_ng",
 		.nargs = 2,
 		.arg_types = { INTERVALOID, DATEOID },
-		.group_estimate = time_bucket_group_estimate, // AALEKSEEV XXX TODO
+		.group_estimate = time_bucket_group_estimate,
+		.sort_transform = time_bucket_sort_transform,
+	},
+	{
+		.origin = ORIGIN_TIMESCALE_EXPERIMENTAL,
+		.is_bucketing_func = true,
+		.funcname = "time_bucket_ng",
+		.nargs = 3,
+		.arg_types = { INTERVALOID, DATEOID, DATEOID },
+		.group_estimate = time_bucket_group_estimate,
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
@@ -305,8 +314,8 @@ static FuncInfo funcinfo[] = {
 		.origin = ORIGIN_TIMESCALE_EXPERIMENTAL,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_ng",
-		.nargs = 2,
-		.arg_types = { INTERVALOID, TIMESTAMPTZOID },
+		.nargs = 3,
+		.arg_types = { INTERVALOID, TIMESTAMPOID, TIMESTAMPOID },
 		.group_estimate = time_bucket_group_estimate,
 		.sort_transform = time_bucket_sort_transform,
 	},
