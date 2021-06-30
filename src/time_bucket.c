@@ -98,6 +98,7 @@ ts_int64_bucket(PG_FUNCTION_ARGS)
  * This makes time-buckets by a week more intuitive and aligns it with
  * date_trunc.
  */
+// AALEKSEEV TODO reimplement, period can be variable!
 #define DEFAULT_ORIGIN (JAN_3_2000)
 #define TIME_BUCKET_TS(period, timestamp, result, shift)                                           \
 	do                                                                                             \
@@ -232,7 +233,7 @@ ts_date_bucket(PG_FUNCTION_ARGS)
 	if (DATE_NOT_FINITE(date))
 		PG_RETURN_DATEADT(date);
 
-	period = get_interval_period_timestamp_units(interval);
+	period = get_interval_period_timestamp_units(interval); // AALEKSEEV TODO reimplement
 	/* check the period aligns on a date */
 	check_period_is_daily(period);
 
