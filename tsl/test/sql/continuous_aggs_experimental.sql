@@ -1,3 +1,7 @@
+-- This file and its contents are licensed under the Timescale License.
+-- Please see the included NOTICE for copyright information and
+-- LICENSE-TIMESCALE for a copy of the license.
+
 -- Make sure experimental immutable function with 2 arguments can be used in caggs.
 -- Functions with 3 arguments and/or stable functions are currently not supported in caggs.
 
@@ -39,5 +43,6 @@ GROUP BY city, bucket;
 SELECT to_char(bucket, 'YYYY-MM-DD'), city, min, max
 FROM conditions_summary_weekly
 ORDER BY bucket;
+
 
 DROP TABLE conditions CASCADE;

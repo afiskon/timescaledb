@@ -19,15 +19,16 @@ typedef double (*group_estimate_func)(PlannerInfo *root, FuncExpr *expr, double 
 /* Describes the function origin */
 typedef enum
 {
-	/* Function is provided by Postgres */
+	/*
+	 * Function is provided by PostgreSQL.
+	 */
 	ORIGIN_POSTGRES = 0,
 	/*
-	 * Function is provided by TS and is stable.
-	 * It should be looked for in the default TS schema.
+	 * Function is provided by TimescaleDB.
 	 */
-	ORIGIN_TIMESCALE_STABLE = 1,
+	ORIGIN_TIMESCALE = 1,
 	/*
-	 * Fuction is provided by TS and is experimental.
+	 * Fuction is provided by TimescaleDB and is experimental.
 	 * It should be looked for in the experimental schema.
 	 */
 	ORIGIN_TIMESCALE_EXPERIMENTAL = 2,

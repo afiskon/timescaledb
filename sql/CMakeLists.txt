@@ -25,7 +25,8 @@ set(MOD_FILES
     updates/2.1.0--2.1.1.sql
     updates/2.1.1--2.2.0.sql
     updates/2.2.0--2.2.1.sql
-    updates/2.2.1--2.3.0.sql)
+    updates/2.2.1--2.3.0.sql
+    updates/2.3.0--2.3.1.sql)
 
 # Files for downgrade scripts.
 set(REV_FILES)
@@ -47,7 +48,7 @@ else()
     SOURCE_VERSION
     ${PROJECT_VERSION_MOD}
     TARGET_VERSION
-    ${UPDATE_FROM_VERSION}
+    ${DOWNGRADE_TO_VERSION}
     INPUT_DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR}/updates
     FILES
@@ -93,8 +94,6 @@ endfunction()
 version_files("${PRE_UPDATE_FILES}" PRE_UPDATE_FILES_VERSIONED)
 version_files("${POST_UPDATE_FILES}" POST_UPDATE_FILES_VERSIONED)
 version_files("${PRE_INSTALL_SOURCE_FILES}" PRE_INSTALL_SOURCE_FILES_VERSIONED)
-version_files("${IMMUTABLE_API_SOURCE_FILES}"
-              IMMUTABLE_API_SOURCE_FILES_VERSIONED)
 version_files("${SOURCE_FILES}" SOURCE_FILES_VERSIONED)
 version_files("${MOD_FILES}" MOD_FILES_VERSIONED)
 version_files("updates/latest-dev.sql" LASTEST_MOD_VERSIONED)
@@ -122,7 +121,7 @@ endfunction()
 
 # Generate the extension file used with CREATE EXTENSION
 cat_files(
-  "${PRE_INSTALL_SOURCE_FILES_VERSIONED};${SOURCE_FILES_VERSIONED};${IMMUTABLE_API_SOURCE_FILES_VERSIONED};${NOTICE_FILE}"
+  "${PRE_INSTALL_SOURCE_FILES_VERSIONED};${SOURCE_FILES_VERSIONED};${NOTICE_FILE}"
   ${CMAKE_CURRENT_BINARY_DIR}/${INSTALL_FILE})
 add_custom_target(sqlfile ALL
                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${INSTALL_FILE})

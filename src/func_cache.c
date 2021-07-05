@@ -176,7 +176,7 @@ typedef struct FuncEntry
 /* Information about functions that we put in the cache */
 static FuncInfo funcinfo[] = {
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 2,
@@ -185,7 +185,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 3,
@@ -194,7 +194,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 2,
@@ -203,7 +203,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 3,
@@ -212,7 +212,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 2,
@@ -221,7 +221,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 3,
@@ -230,7 +230,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 2,
@@ -239,7 +239,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 3,
@@ -248,7 +248,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 2,
@@ -257,7 +257,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 3,
@@ -266,7 +266,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 2,
@@ -275,7 +275,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket",
 		.nargs = 3,
@@ -320,7 +320,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_gapfill",
 		.nargs = 4,
@@ -329,7 +329,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_gapfill_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_gapfill",
 		.nargs = 4,
@@ -338,7 +338,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_gapfill_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_gapfill",
 		.nargs = 4,
@@ -347,7 +347,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_gapfill_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_gapfill",
 		.nargs = 4,
@@ -356,7 +356,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_gapfill_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_gapfill",
 		.nargs = 4,
@@ -365,7 +365,7 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_gapfill_sort_transform,
 	},
 	{
-		.origin = ORIGIN_TIMESCALE_STABLE,
+		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_gapfill",
 		.nargs = 4,
@@ -433,7 +433,7 @@ initialize_func_info()
 		bool hash_found;
 		Oid funcid;
 
-		if (finfo->origin == ORIGIN_TIMESCALE_STABLE)
+		if (finfo->origin == ORIGIN_TIMESCALE)
 		{
 			namespaceoid = extension_nsp;
 		}

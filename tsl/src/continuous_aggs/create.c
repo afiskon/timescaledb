@@ -1070,9 +1070,18 @@ get_partialize_funcexpr(Aggref *agg)
 static bool
 is_valid_bucketing_function(Oid funcid)
 {
+	bool is_timescale;
 	FuncInfo *finfo = ts_func_cache_get_bucketing_func(funcid);
 
-	return finfo != NULL && (finfo->origin != ORIGIN_POSTGRES) && finfo->nargs == 2;
+	if (finfo == NULL)
+	{
+		return false;
+	}
+
+	is_timescale =
+		(finfo->origin == ORIGIN_TIMESCALE) || (finfo->origin == ORIGIN_TIMESCALE_EXPERIMENTAL);
+
+	return is_timescale && (finfo->nargs == 2);
 }
 
 /*initialize MatTableColumnInfo */

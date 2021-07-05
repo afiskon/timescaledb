@@ -31,6 +31,13 @@
 
 #define TS_UPDATE_SCRIPT_CONFIG_VAR "timescaledb.update_script_stage"
 #define POST_UPDATE "post"
+/*
+ * The name of the experimental schema.
+ *
+ * Call ts_extension_schema_name() or ts_experimental_schema_name() for
+ * consistency. Don't use this macro directly.
+ */
+#define TS_EXPERIMENTAL_SCHEMA_NAME "timescaledb_experimental"
 static Oid extension_proxy_oid = InvalidOid;
 
 /*
@@ -205,7 +212,7 @@ ts_extension_schema_name(void)
 const char *
 ts_experimental_schema_name(void)
 {
-	return "timescaledb_experimental";
+	return TS_EXPERIMENTAL_SCHEMA_NAME;
 }
 
 /*
