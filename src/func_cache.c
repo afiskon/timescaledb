@@ -329,6 +329,15 @@ static FuncInfo funcinfo[] = {
 		.sort_transform = time_bucket_sort_transform,
 	},
 	{
+		.origin = ORIGIN_TIMESCALE_EXPERIMENTAL,
+		.is_bucketing_func = true,
+		.funcname = "time_bucket_ng",
+		.nargs = 4,
+		.arg_types = { INTERVALOID, TIMESTAMPTZOID, TIMESTAMPTZOID, TEXTOID },
+		.group_estimate = time_bucket_group_estimate,
+		.sort_transform = time_bucket_sort_transform,
+	},
+	{
 		.origin = ORIGIN_TIMESCALE,
 		.is_bucketing_func = true,
 		.funcname = "time_bucket_gapfill",

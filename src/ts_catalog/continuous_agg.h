@@ -65,8 +65,8 @@ typedef struct ContinuousAggsBucketFunction
 	char *name;
 	/* `bucket_width` argument of the function */
 	Interval *bucket_width;
-	/* `origin` argument of the function provided by the user */
-	char *origin;
+	/* `origin` argument of the function. If not specified, stores infinity */
+	Timestamp origin;
 	/* `timezone` argument of the function provided by the user */
 	char *timezone;
 } ContinuousAggsBucketFunction;

@@ -55,6 +55,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
     cagg_usage.sql
     cagg_policy_run.sql
     cagg_monthly.sql
+    cagg_with_origin.sql
     cagg_with_timezone.sql
     data_fetcher.sql
     data_node_bootstrap.sql
