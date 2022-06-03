@@ -358,7 +358,7 @@ set(PG_VERSION "${PG_VERSION_MAJOR}.${PG_VERSION_MINOR}")
 if((${PG_VERSION_MAJOR} LESS "12")
    OR (${PG_VERSION_MAJOR} GREATER "14")
    AND NOT (${EXPERIMENTAL}))
-  message(FATAL_ERROR "TimescaleDB only supports PostgreSQL 12, 13 and 14")
+#  message(FATAL_ERROR "TimescaleDB only supports PostgreSQL 12, 13 and 14")
 else()
   message(STATUS "Compiling against PostgreSQL version ${PG_VERSION}")
 endif()
@@ -576,12 +576,12 @@ execute_process(
 string(REGEX MATCH "--with-(ssl=)?openssl" PG_USE_OPENSSL
              "${PG_CONFIGURE_FLAGS}")
 
-if(USE_OPENSSL AND (NOT PG_USE_OPENSSL))
-  message(
-    FATAL_ERROR
-      "PostgreSQL was built without OpenSSL support, which TimescaleDB needs for full compatibility. Please rebuild PostgreSQL using `--with-openssl` or if you want to continue without OpenSSL, re-run bootstrap with `-DUSE_OPENSSL=0`"
-  )
-endif(USE_OPENSSL AND (NOT PG_USE_OPENSSL))
+#if(USE_OPENSSL AND (NOT PG_USE_OPENSSL))
+#  message(
+#    FATAL_ERROR
+#      "PostgreSQL was built without OpenSSL support, which TimescaleDB needs for full compatibility. Please rebuild PostgreSQL using `--with-openssl` or if you want to continue without OpenSSL, re-run bootstrap with `-DUSE_OPENSSL=0`"
+#  )
+#endif(USE_OPENSSL AND (NOT PG_USE_OPENSSL))
 
 if(USE_OPENSSL)
   # Try to find a local OpenSSL installation

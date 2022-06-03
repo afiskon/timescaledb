@@ -20,21 +20,23 @@
 #define WIN32
 #endif
 
+/*
 #if !defined(WIN32) && !defined(__CYGWIN__)
 #if __GNUC__ >= 4
 #if defined(PGDLLEXPORT)
 #if TS_EMPTY(PGDLLEXPORT)
-/* PGDLLEXPORT is defined but empty. We can safely undef it. */
+// PGDLLEXPORT is defined but empty. We can safely undef it.
 #undef PGDLLEXPORT
 #else
 #error "PGDLLEXPORT is already defined"
 #endif
-#endif /* defined(PGDLLEXPORT) */
+#endif // defined(PGDLLEXPORT)
 #define PGDLLEXPORT __attribute__((visibility("default")))
 #else
 #error "Unsupported GNUC version"
-#endif /* __GNUC__ */
+#endif // __GNUC__
 #endif
+*/
 
 /*
  * On windows, symbols shared across modules have to be marked "export" in the
